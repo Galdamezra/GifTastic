@@ -36,15 +36,15 @@ function displayAnimalGiphy() {
     })
   };
 
+  $(document).on("click", ".gifs", toggle);
 
-      //=====Week 6.3 pausing gifs student
-      //on click function
-  $(".gifs").on("click", function() {
-    //set the attribute data-state
-    var state  = $(this).attr("data-state");
-    //if the images state update is still, update the src attribute to its data-animate value
-    //then set the image's data-state to animate
-    //else set src to the data-still value
+  function toggle() {
+    //set to data-state
+    var state = $(this).attr("data-state");
+    //if the images state is still, update src to data-animate
+    //then set the data-state to animate
+    //else set src to data-still value
+    console.log(state);
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
@@ -52,8 +52,63 @@ function displayAnimalGiphy() {
       $(this).attr("src", $(this).attr("data-still"));
       $(this).attr("data-state", "still");
     }
+  }
 
-  });
+  //==========================================TRY 1
+  // $(document).on("click", ".gifs", toggleGif);
+  // function toggleGif() {
+  //   //get index of image
+  //   var temp = $(this).attr("id");
+  //   term.split(/[0-9]+/);
+  //   var ix = temp[3];
+  //   var newId = "#num" + ix ;
+  //
+  //   if(currentURL) {
+  //     currentURL = false;
+  //
+  //     //create variable to hold new url
+  //     var newURL = response.data[ix].images.fixed_height.url;
+  //
+  //     //create element to display the new item
+  //     var newEl = "<img src ='" + newURL + "'><p>Rating: " + response.data[ix].rating;
+  //
+  //     //replace on screen
+  //     $(newId).html(newEl);
+  //   }
+  //
+  //   else {
+  //     currentURL = true;
+  //
+  //     //create variable to hold new url
+  //     var newURL = response.data[ix].images.original_still.url;
+  //
+  //     //create element to display the new item
+  //     var newEl = "<img src ='" + newURL + "'><p>Rating: " + response.data[ix].rating;
+  //
+  //     //replace on screen
+  //     $(newId).html(newEl);
+  //   }
+  // }
+
+  //=================================TRY 2
+  //     //=====Week 6.3 pausing gifs student
+  //     //on click function
+  // $(".gifs").on("click", function() {
+  //   //set the attribute data-state
+  //   console.log(this);
+  //   var state  = $(this).attr("data-state");
+  //   //if the images state update is still, update the src attribute to its data-animate value
+  //   //then set the image's data-state to animate
+  //   //else set src to the data-still value
+  //   if (state === "still") {
+  //     $(this).attr("src", $(this).attr("data-animate"));
+  //     $(this).attr("data-state", "animate");
+  //   } else {
+  //     $(this).attr("src", $(this).attr("data-still"));
+  //     $(this).attr("data-state", "still");
+  //   }
+  //
+  // });
 
         //create attributes as needed to match the example of still and animate.
         //have to create each attirbute
