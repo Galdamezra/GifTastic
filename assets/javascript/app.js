@@ -1,5 +1,12 @@
+//==========how to clear out input
+//=========VERIFY URL IS CORRECT
+
+
+$(document).ready(function() {
+
 //Starting animals
-var animals = ["dog", "cat", "bird"];
+var animals = ["Dog", "Cat", "Bird"];
+
 
 //displayAnimalGiphy function ro render the giphy
 function displayAnimalGiphy() {
@@ -13,28 +20,64 @@ function displayAnimalGiphy() {
       url: queryURL,
       method: "GET"
     }).done(function(response) {
-      console.log(this);
+      console.log(response);
+      $("#animals").empty();
+      response.data.forEach(function(image) {
+        $("#animals").append('<p>Rating: "' + image.rating + '"<p>');
 
-      //assigning image url to variable
-      var imageUrl = response.data.image_original_url;
+        var gifImage = $("<img>");
+        gifImage.attr("src", image.images.fixed_height_still.url);
+        gifImage.attr("data-still", image.images.fixed_height_still.url);
+        gifImage.attr("data-animate", image.images.fixed_height.url);
+        gifImage.attr("data-state", "still");
+        gifImage.addClass("gifs");
+        $("#animals").append(gifImage);
+      })
+    })
+  };
 
-      //create a new img tag element
-      var animalImage = $("<img>");
 
-      //use img element, add src and alt text
-      animalImage.attr("src", imageUrl);
-      animalImage.attr("alt", "animal image");
+      //=====Week 6.3 pausing gifs student
+      //on click function
+  $(".gifs").on("click", function() {
+    //set the attribute data-state
+    var state  = $(this).attr("data-state");
+    //if the images state update is still, update the src attribute to its data-animate value
+    //then set the image's data-state to animate
+    //else set src to the data-still value
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
 
-      $("#Animals").prepend(animalImage);
+  });
 
-      });
+        //create attributes as needed to match the example of still and animate.
+        //have to create each attirbute
 
-  }
 
-//Function for displaying the movie data
+      // console.log(this);
+      //
+      // //assigning image url to variable
+      // //=========VERIFY URL IS CORRECT
+      // var imageUrl = response.data.image_original_url;
+      //
+      // //create a new img tag element
+      // var animalImage = $("<img>");
+      //
+      // //use img element, add src and alt text
+      // animalImage.attr("src", imageUrl);
+      // animalImage.attr("alt", "animal image");
+      //
+      // $("#Animals").prepend(animalImage);
+
+//Function for displaying the animal data
 function renderButtons() {
 
-  //Deletes the movies prior to adding new movies
+  //Deletes the animals prior to adding new movies
   $("#animal-buttons").empty();
   //Loops through the array of animals
   for (var i = 0; i < animals.length; i++) {
@@ -65,8 +108,12 @@ $("#addAnimal").on("click", function(event) {
   renderButtons();
 });
 
-//Add click event listener to all elements with a class of animal
-$(document).on("click", "animal", displayAnimalGiphy);
-
 //Call renderButtons fucntion to display the initial buttons-view
 renderButtons();
+
+//Add click event listener to all elements with a class of animal
+$(document).on("click", ".animal", displayAnimalGiphy);
+
+
+
+});
