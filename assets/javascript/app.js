@@ -12,7 +12,7 @@ var animals = ["Dog", "Cat", "Bird"];
 function displayAnimalGiphy() {
 
   var animal = $(this).attr("data-name");
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
     //Create AJAX for movie button clicked
@@ -54,6 +54,28 @@ function displayAnimalGiphy() {
     }
   }
 
+
+  //=================================TRY 2
+  //     //=====Week 6.3 pausing gifs student
+  //     //on click function
+  // $(".gifs").on("click", function() {
+  //   //set the attribute data-state
+  //   console.log(this);
+  //   var state  = $(this).attr("data-state");
+  //   //if the images state update is still, update the src attribute to its data-animate value
+  //   //then set the image's data-state to animate
+  //   //else set src to the data-still value
+  //   if (state === "still") {
+  //     $(this).attr("src", $(this).attr("data-animate"));
+  //     $(this).attr("data-state", "animate");
+  //   } else {
+  //     $(this).attr("src", $(this).attr("data-still"));
+  //     $(this).attr("data-state", "still");
+  //   }
+  //
+  // });
+
+
   //==========================================TRY 1
   // $(document).on("click", ".gifs", toggleGif);
   // function toggleGif() {
@@ -90,25 +112,7 @@ function displayAnimalGiphy() {
   //   }
   // }
 
-  //=================================TRY 2
-  //     //=====Week 6.3 pausing gifs student
-  //     //on click function
-  // $(".gifs").on("click", function() {
-  //   //set the attribute data-state
-  //   console.log(this);
-  //   var state  = $(this).attr("data-state");
-  //   //if the images state update is still, update the src attribute to its data-animate value
-  //   //then set the image's data-state to animate
-  //   //else set src to the data-still value
-  //   if (state === "still") {
-  //     $(this).attr("src", $(this).attr("data-animate"));
-  //     $(this).attr("data-state", "animate");
-  //   } else {
-  //     $(this).attr("src", $(this).attr("data-still"));
-  //     $(this).attr("data-state", "still");
-  //   }
-  //
-  // });
+
 
         //create attributes as needed to match the example of still and animate.
         //have to create each attirbute
